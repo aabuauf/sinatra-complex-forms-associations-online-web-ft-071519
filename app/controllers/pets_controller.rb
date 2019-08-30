@@ -45,7 +45,7 @@ patch '/pets/:id' do
   
     if !params["owner"]["name"].empty?
       binding.pry
-      @pet.pets = Owner.create(name: params["owner"]["name"])
+      @pet.owner = Owner.create(name: params["owner"]["name"])
       @pet.save
     end
     redirect "pets/#{@pet.id}"
