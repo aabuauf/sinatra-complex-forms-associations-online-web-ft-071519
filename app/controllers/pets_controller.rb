@@ -44,7 +44,7 @@ patch '/pets/:id' do
     @pet.save
   
     if !params["owner"]["name"].empty?
-      binding.pry
+      
       @pet.owner = Owner.create(name: params["owner"]["name"])
       @pet.save
     end
