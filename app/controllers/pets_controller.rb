@@ -42,6 +42,7 @@ patch '/pets/:id' do
     @pet.update(params["pet"])
     @pet.owner_id = params[:pet][:owner_id][0]
 
+
     if !params["owner"]["name"].empty?
     
       @pet.pets = Owner.create(name: params["owner"]["name"])
