@@ -40,7 +40,7 @@ patch '/pets/:id' do
  
     @pet = Pet.find(params[:id])
     @pet.update(params["pet"])
-    @pet.owner_id = params[:owner][:id]
+    @pet.owner_id = params[:pet][:owner_id][0]
     binding.pry
     if !params["owner"]["name"].empty?
     
