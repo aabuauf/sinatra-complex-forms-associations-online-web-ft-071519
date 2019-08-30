@@ -40,11 +40,18 @@ patch '/pets/:id' do
  
     @pet = Pet.find(params[:id])
     @pet.update(params["pet"])
+    @pet.owner_id = params[:pet][:owner_id][0]
+    @pet.save
+  
     if !params["owner"]["name"].empty?
-      @pet.pets << Owner.create(name: params["owner"]["name"])
+      
+      @pet.owner = Owner.create(name: params["owner"]["name"])
+      @pet.save
     end
     redirect "pets/#{@pet.id}"
 end
+
+
   get '/pets/:id/edit' do 
     
     @pet = Pet.find(params[:id])
